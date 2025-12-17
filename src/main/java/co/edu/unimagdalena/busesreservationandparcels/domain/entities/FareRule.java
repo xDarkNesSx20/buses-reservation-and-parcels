@@ -27,11 +27,11 @@ public class FareRule {
     @JoinColumn(name = "route_id", nullable = false)
     private Route route;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "from_stop_id", nullable = false)
     private Stop fromStop;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "to_stop_id", nullable = false)
     private Stop toStop;
 

@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "discounts")
+//TODO: Idk if the relation FareRule - Discounts has to be OneToMany or ManyToMany. I gotta find this out.
 public class Discount {
     @Id
     @Column(name = "discount_id")

@@ -24,22 +24,22 @@ public class Parcel {
     @Column(nullable = false, unique = true, updatable = false, length = 16)
     private String code;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "from_stop_id", nullable = false)
     private Stop fromStop;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "to_stop_id", nullable = false)
     private Stop toStop;
 
     @Column(nullable = false, precision =  8, scale = 2)
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id", nullable = false)
     private AppUser sender;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id", nullable = false)
     private AppUser receiver;
 

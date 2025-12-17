@@ -15,6 +15,8 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "seats_hold")
+//TODO: I don't recall if having Lazy fetchType, we just know the entity's relation ID or is just null/empty.
+// Check this out!! IF(1) -> Trip - Lazy; DLC -> EAGER
 public class SeatHold {
     @Id
     @Column(name = "seat_hold_id")
