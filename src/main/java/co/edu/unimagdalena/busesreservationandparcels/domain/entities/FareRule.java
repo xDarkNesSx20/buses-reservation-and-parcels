@@ -27,18 +27,18 @@ public class FareRule {
     @JoinColumn(name = "route_id", nullable = false)
     private Route route;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "from_stop_id", nullable = false)
     private Stop fromStop;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "to_stop_id", nullable = false)
     private Stop toStop;
 
     @Column(name = "base_price", nullable = false, precision = 8, scale = 2)
     private BigDecimal basePrice;
 
-    @OneToMany(mappedBy = "fareRule")
+    @OneToMany(mappedBy = "fareRule", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @Builder.Default
     private Set<Discount> discounts = new HashSet<>();
 
@@ -48,9 +48,5 @@ public class FareRule {
 
     public void addDiscounts(Discount... discounts) {
         this.discounts.addAll(List.of(discounts));
-    }
-
-    public void clearDiscounts() {
-        this.discounts.clear();
     }
 }

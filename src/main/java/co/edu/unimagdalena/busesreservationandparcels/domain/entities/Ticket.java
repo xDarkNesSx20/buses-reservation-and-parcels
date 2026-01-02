@@ -16,8 +16,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tickets")
-//TODO: The same as SeatHold but with the Stops. Even though, I think it's well done like this. Maybe Trip and Passenger
-// could return just for qr or clerk verification
 public class Ticket {
     @Id
     @Column(name = "ticket_id")

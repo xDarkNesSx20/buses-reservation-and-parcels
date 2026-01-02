@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "discounts")
-//TODO: Idk if the relation FareRule - Discounts has to be OneToMany or ManyToMany. I gotta find this out.
 public class Discount {
     @Id
     @Column(name = "discount_id")
@@ -23,7 +22,7 @@ public class Discount {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fare_rule_id")
+    @JoinColumn(name = "fare_rule_id", nullable = false)
     private FareRule fareRule;
 
     @Enumerated(EnumType.STRING)
