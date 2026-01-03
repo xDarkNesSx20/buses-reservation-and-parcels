@@ -44,8 +44,4 @@ public class Bus {
     public void addAmenities(Amenity... amenities) {
         this.amenities.addAll(List.of(amenities));
     }
-
-    public void clearAmenities() {
-        this.amenities.clear();
-    }
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,7 +47,10 @@ public class FareRule {
     @Builder.Default
     private Boolean dynamicPricing = false;
 
-    public void addDiscounts(Discount... discounts) {
-        this.discounts.addAll(List.of(discounts));
+    public void addDiscounts(List<Discount> discounts) {
+        discounts.forEach(d -> {
+            this.discounts.add(d);
+            d.setFareRule(this);
+        });
     }
 }
