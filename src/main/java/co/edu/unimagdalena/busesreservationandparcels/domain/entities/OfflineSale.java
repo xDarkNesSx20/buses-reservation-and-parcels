@@ -65,7 +65,7 @@ public class OfflineSale {
     @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
 
-    @Column(name = "synced_at",  nullable = false, updatable = false)
+    @Column(name = "synced_at", updatable = false)
     private OffsetDateTime syncedAt;
 
     @Column(name = "ticket_id")
