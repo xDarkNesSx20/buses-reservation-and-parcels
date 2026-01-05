@@ -20,6 +20,10 @@ public interface ParcelRepository extends JpaRepository<Parcel, Long> {
     List<Parcel> findByToStop_Id(Long toStopId);
     List<Parcel> findByFromStop_IdAndToStop_Id(Long fromStopId, Long toStopId);
 
+    List<Parcel> findByFromStop_IdAndToStop_IdAndStatus(Long fromStopId, Long toStopId, ParcelStatus status);
+    List<Parcel> findByFromStop_IdAndStatus(Long fromStopId, ParcelStatus status);
+    List<Parcel> findByToStop_IdAndStatus(Long toStopId, ParcelStatus status);
+
     @Query("SELECT P FROM Parcel P WHERE P.toStop.id = :toStopId AND P.status IN ('CREATED', 'IN_TRANSIT')")
     List<Parcel> getIncomingParcels(@Param("toStopId") Long toStopId);
 
@@ -29,4 +33,5 @@ public interface ParcelRepository extends JpaRepository<Parcel, Long> {
     List<Parcel> findBySender_Id(Long senderId);
     List<Parcel> findByReceiver_Id(Long receiverId);
     List<Parcel> findByStatus(ParcelStatus status);
+    Optional<Parcel> findByDeliveryOTP(String deliveryOTP);
 }
