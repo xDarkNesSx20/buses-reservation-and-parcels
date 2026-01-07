@@ -26,6 +26,9 @@ public class Bus {
     @Column(nullable = false, unique = true, length = 8)
     private String plate;
 
+    @Column(nullable = false, length = 4)
+    private String number;
+
     @Column(nullable = false)
     private Integer capacity;
 

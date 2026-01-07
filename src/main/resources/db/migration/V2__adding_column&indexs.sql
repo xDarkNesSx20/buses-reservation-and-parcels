@@ -1,0 +1,2 @@
+ALTER TABLE buses
+ADD number VARCHAR(4);
