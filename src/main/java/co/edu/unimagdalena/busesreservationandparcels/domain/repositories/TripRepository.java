@@ -14,17 +14,27 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TripRepository extends JpaRepository<Trip, Long> {
-    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.routeId = :routeId")
+    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.route.id = :routeId")
     List<Trip> findByRoute_Id(@Param("routeId") Long routeId);
 
-    List<Trip> findByStatus(TripStatus status);
-    List<Trip> findByDate(LocalDate date);
-    Page<Trip> findByDateBetween(LocalDate from, LocalDate to, Pageable pageable);
+    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.status = :status")
+    List<Trip> findByStatus(@Param("status") TripStatus status);
+
+    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.date = :date")
+    List<Trip> findByDate(@Param("date") LocalDate date);
+
+    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.date BETWEEN :from AND :to")
+    Page<Trip> findByDateBetween(@Param("from") LocalDate from, @Param("to") LocalDate to, Pageable pageable);
 
     @Query("SELECT T FROM Trip T JOIN FETCH T.route LEFT JOIN FETCH T.bus WHERE T.id = :id ")
     Optional<Trip> findByIdWithDetails(@Param("id") Long id);
 
-    List<Trip> findByDepartureAtBetween(OffsetDateTime from, OffsetDateTime to);
-    List<Trip> findByRoute_IdAndStatus(Long routeId, TripStatus status);
-    List<Trip> findByRoute_IdAndDate(Long routeId, LocalDate date);
+    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.departureAt BETWEEN :from AND :to")
+    List<Trip> findByDepartureAtBetween(@Param("from") OffsetDateTime from, @Param("to") OffsetDateTime to);
+
+    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.route.id = :routeId AND T.status = :status")
+    List<Trip> findByRoute_IdAndStatus(@Param("routeId") Long routeId, @Param("status") TripStatus status);
+
+    @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.route.id = :routeId AND T.date = :date")
+    List<Trip> findByRoute_IdAndDate(@Param("routeId") Long routeId, @Param("date") LocalDate date);
 }

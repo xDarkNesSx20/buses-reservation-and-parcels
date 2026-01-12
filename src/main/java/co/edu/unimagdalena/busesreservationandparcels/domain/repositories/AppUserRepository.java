@@ -18,10 +18,5 @@ public interface AppUserRepository extends JpaRepository<AppUser,Long> {
     Page<AppUser> findByCreatedAtBetween(OffsetDateTime from, OffsetDateTime to, Pageable pageable);
     Optional<AppUser> findByEmailIgnoreCase(String email);
     List<AppUser> findByActive(Boolean active);
-
-    @Query("""
-        SELECT U FROM AppUser U
-        WHERE :roles IN U.roles
-    """)
-    List<AppUser> findByHavingTheseRoles(@Param("roles") Collection<Role> roles);
+    List<AppUser> findByRole(Role role);
 }

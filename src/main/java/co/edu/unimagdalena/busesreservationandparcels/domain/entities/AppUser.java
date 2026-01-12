@@ -6,8 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Set;
-
 @Data
 @Entity
 @SuperBuilder
@@ -26,9 +24,6 @@ public class AppUser extends User {
     @Builder.Default
     private Boolean active = true;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "role")
-    private Set<Role> roles;
+    @Column(nullable = false)
+    private Role role;
 }

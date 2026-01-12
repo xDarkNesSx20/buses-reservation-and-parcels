@@ -37,11 +37,11 @@ public class Parcel {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id", nullable = false)
-    private AppUser sender;
+    private User sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id", nullable = false)
-    private AppUser receiver;
+    private User receiver;
 
     @Enumerated(EnumType.STRING)
     @Builder.Default

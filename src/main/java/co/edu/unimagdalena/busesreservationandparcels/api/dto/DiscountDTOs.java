@@ -1,5 +1,6 @@
 package co.edu.unimagdalena.busesreservationandparcels.api.dto;
 
+import co.edu.unimagdalena.busesreservationandparcels.api.dto.CommonResponses.FareRuleSummary;
 import co.edu.unimagdalena.busesreservationandparcels.domain.enums.DiscountType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -20,7 +21,7 @@ public class DiscountDTOs {
                                    BigDecimal value) implements Serializable {
     }
 
-    public record DiscountFullResponse(Long id, /*FareRuleSummary fareRule,*/ DiscountType type,
+    public record DiscountFullResponse(Long id, FareRuleSummary fareRule, DiscountType type,
                                        BigDecimal value) implements Serializable {
     }
 }

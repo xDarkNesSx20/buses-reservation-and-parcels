@@ -1,5 +1,6 @@
 package co.edu.unimagdalena.busesreservationandparcels.api.dto;
 
+import co.edu.unimagdalena.busesreservationandparcels.api.dto.CommonResponses.BusSummary;
 import co.edu.unimagdalena.busesreservationandparcels.domain.enums.SeatType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -15,5 +16,5 @@ public class SeatDTOs {
 
     public record SeatResponse(Long id, Long busId, String number, SeatType type) implements Serializable {}
 
-    public record SeatFullResponse(Long id, /*BusSummary bus,*/ String number, SeatType type) implements Serializable {}
+    public record SeatFullResponse(Long id, BusSummary bus, String number, SeatType type) implements Serializable {}
 }

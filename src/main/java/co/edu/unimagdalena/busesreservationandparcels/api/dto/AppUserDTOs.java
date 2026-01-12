@@ -21,6 +21,6 @@ public class AppUserDTOs {
     }
 
     public record AppUserResponse(Long id, String fullName, String phone, String email, Boolean active,
-                                  OffsetDateTime createdAt, Set<Role> roles) implements Serializable {
+                                  OffsetDateTime createdAt, Role role) implements Serializable {
     }
 }

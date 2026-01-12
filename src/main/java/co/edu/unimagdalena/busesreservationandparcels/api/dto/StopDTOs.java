@@ -1,5 +1,6 @@
 package co.edu.unimagdalena.busesreservationandparcels.api.dto;
 
+import co.edu.unimagdalena.busesreservationandparcels.api.dto.CommonResponses.RouteSummary;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 
@@ -18,7 +19,7 @@ public class StopDTOs {
                                BigDecimal longitude) implements Serializable {
     }
 
-    public record StopFullResponse(Long id, /*RouteSummary route,*/ String name, Integer stopOrder, BigDecimal latitude,
+    public record StopFullResponse(Long id, RouteSummary route, String name, Integer stopOrder, BigDecimal latitude,
                                    BigDecimal longitude) implements Serializable {
     }
 }

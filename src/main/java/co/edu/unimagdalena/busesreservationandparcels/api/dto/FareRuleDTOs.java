@@ -1,5 +1,7 @@
 package co.edu.unimagdalena.busesreservationandparcels.api.dto;
 
+import co.edu.unimagdalena.busesreservationandparcels.api.dto.CommonResponses.StopSummary;
+import co.edu.unimagdalena.busesreservationandparcels.api.dto.CommonResponses.RouteSummary;
 import jakarta.validation.constraints.NotNull;
 import co.edu.unimagdalena.busesreservationandparcels.api.dto.DiscountDTOs.DiscountResponse;
 import jakarta.validation.constraints.Positive;
@@ -18,12 +20,12 @@ public class FareRuleDTOs {
                                         Boolean dynamicPricing) implements Serializable {
     }
 
-    public record FareRuleResponse(Long id, Long routeId, /*StopSummary fromStop, StopSummary toStop,*/
+    public record FareRuleResponse(Long id, Long routeId, StopSummary fromStop, StopSummary toStop,
                                    BigDecimal basePrice,
                                    Boolean dynamicPricing, Set<DiscountResponse> discounts) implements Serializable {
     }
 
-    public record FareRuleFullResponse(Long id, /*RouteSummary route, StopSummary fromStop, StopSummary toStop,*/
+    public record FareRuleFullResponse(Long id, RouteSummary route, StopSummary fromStop, StopSummary toStop,
                                    BigDecimal basePrice,
                                    Boolean dynamicPricing, Set<DiscountResponse> discounts) implements Serializable {
     }
