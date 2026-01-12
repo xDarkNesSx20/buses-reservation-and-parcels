@@ -13,7 +13,10 @@ public class AssignmentDTOs {
                                           Boolean checkListOk) implements Serializable {
     }
 
-    public record AssignmentResponse(Long id, TripSummary trip, UserSummary driver, UserSummary dispatcher,
+    public record AssignmentResponse(Long id, Long tripId, UserSummary driver, UserSummary dispatcher,
+                                    OffsetDateTime assignedAt, Boolean checkListOk) implements Serializable {}
+
+    public record AssignmentFullResponse(Long id, TripSummary trip, UserSummary driver, UserSummary dispatcher,
                                      OffsetDateTime assignedAt, Boolean checkListOk) implements Serializable {
     }
 }
