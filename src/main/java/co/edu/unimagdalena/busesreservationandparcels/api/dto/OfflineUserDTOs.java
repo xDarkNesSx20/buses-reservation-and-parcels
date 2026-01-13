@@ -11,10 +11,10 @@ public class OfflineUserDTOs {
                                            @NotBlank @Size(min = 8, max = 10) String idNumber) implements Serializable {
     }
 
-    public record AppUserUpdateRequest(String fullName, String phone) implements Serializable {
+    public record OfflineUserUpdateRequest(String fullName, String phone) implements Serializable {
     }
 
-    public record AppUserResponse(Long id, String fullName, String phone, String idNumber,
+    public record OfflineUserResponse(Long id, String fullName, String phone, String idNumber,
                                   OffsetDateTime createdAt) implements Serializable {
     }
 }

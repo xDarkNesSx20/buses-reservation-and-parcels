@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface StopRepository extends JpaRepository<Stop, Long> {
     List<Stop> findByRoute_Id(Long routeId);
-    Optional<Stop> findByName(String name);
+    List<Stop> findByName(String name);
     Optional<Stop> findByRoute_IdAndStopOrder(Long routeId, Integer stopOrder);
 
     @Query(value = "SELECT * FROM stops WHERE route_id = :routeId ORDER BY stop_order DESC LIMIT 1", nativeQuery = true)

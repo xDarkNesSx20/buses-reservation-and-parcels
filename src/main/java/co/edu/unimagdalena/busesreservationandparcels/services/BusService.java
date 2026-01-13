@@ -5,6 +5,7 @@ import co.edu.unimagdalena.busesreservationandparcels.domain.enums.BusStatus;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public interface BusService {
     BusResponse create(BusCreateRequest request);
@@ -14,6 +15,8 @@ public interface BusService {
     BusResponse update(Long id, BusUpdateRequest request);
 
     void delete(Long id);
+
+    void addAmenities(Long id, Set<Long> amenitiesIds);
 
     BusResponse getByPlate(String plate);
 

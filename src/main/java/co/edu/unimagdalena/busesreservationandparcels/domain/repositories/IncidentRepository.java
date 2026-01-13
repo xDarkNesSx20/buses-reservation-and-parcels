@@ -13,6 +13,6 @@ public interface IncidentRepository extends JpaRepository<Incident, Long> {
     List<Incident> findByType(IncidentType type);
     List<Incident> findByEntityType(EntityType entityType);
     List<Incident> findByTypeAndEntityType(IncidentType type, EntityType entityType);
-    Optional<Incident> findByEntityId(Long entityId);
+    Optional<Incident> findByEntityIdAndEntityType(Long entityId, EntityType entityType);
     List<Incident> findByCreatedAtBetween(OffsetDateTime from, OffsetDateTime to);
 }

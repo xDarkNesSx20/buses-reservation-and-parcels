@@ -13,14 +13,23 @@ import java.util.Optional;
 
 public interface OfflineSaleRepository extends JpaRepository<OfflineSale, Long> {
     List<OfflineSale> findByTripId(Long tripId);
+
     Optional<OfflineSale> findByTripIdAndSeatNumber(Long tripId, String seatNumber);
+
     List<OfflineSale> findByStatus(SyncStatus status);
+
     List<OfflineSale> findByPaymentMethod(PaymentMethod paymentMethod);
+
     List<OfflineSale> findByCreatedAtBetween(OffsetDateTime start, OffsetDateTime end);
+
     List<OfflineSale> findBySyncedAtBetween(OffsetDateTime start, OffsetDateTime end);
+
     List<OfflineSale> findByPassengerIdNumber(String passengerIdNumber);
+
     List<OfflineSale> findByFromStopId(Long stopId);
+
     List<OfflineSale> findByToStopId(Long stopId);
+
     List<OfflineSale> findByFromStopIdAndToStopId(Long fromStopId, Long toStopId);
 
     @Query("SELECT OS FROM OfflineSale OS WHERE OS.status IN ('PENDING', 'CONFLICT')")

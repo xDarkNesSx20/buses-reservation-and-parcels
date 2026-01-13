@@ -11,9 +11,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BusRepository extends JpaRepository<Bus, Long> {
+    @Query("SELECT B FROM Bus B LEFT JOIN FETCH B.amenities WHERE B.plate = :plate")
     Optional<Bus> findByPlate(String plate);
+
     List<Bus> findByCapacityGreaterThanEqual(Integer minCapacity);
     List<Bus> findByStatus(BusStatus status);
+    boolean existsByPlate(String plate);
+
+    @Query("SELECT B FROM Bus B LEFT JOIN FETCH B.amenities")
+    List<Bus> findAllWithAmenities();
 
     @Query("SELECT B FROM Bus B LEFT JOIN FETCH B.amenities WHERE B.id = :id")
     Optional<Bus> findByIdWithAmenities(@Param("id") Long id);

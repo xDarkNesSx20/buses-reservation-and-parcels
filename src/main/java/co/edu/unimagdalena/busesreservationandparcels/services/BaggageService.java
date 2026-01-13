@@ -6,9 +6,12 @@ import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 public interface BaggageService {
     BaggageResponse create(Long ticketId, BaggageCreateRequest request);
+
+    List<BaggageResponse> createAll(Long ticketId, Set<BaggageCreateRequest> requests);
 
     BaggageResponse get(Long id);
 

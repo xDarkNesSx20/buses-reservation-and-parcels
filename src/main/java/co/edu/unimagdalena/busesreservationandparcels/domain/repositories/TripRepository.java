@@ -26,9 +26,6 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.date BETWEEN :from AND :to")
     Page<Trip> findByDateBetween(@Param("from") LocalDate from, @Param("to") LocalDate to, Pageable pageable);
 
-    @Query("SELECT T FROM Trip T JOIN FETCH T.route LEFT JOIN FETCH T.bus WHERE T.id = :id ")
-    Optional<Trip> findByIdWithDetails(@Param("id") Long id);
-
     @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.departureAt BETWEEN :from AND :to")
     List<Trip> findByDepartureAtBetween(@Param("from") OffsetDateTime from, @Param("to") OffsetDateTime to);
 
@@ -37,4 +34,7 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     @Query("SELECT T FROM Trip T LEFT JOIN FETCH T.bus WHERE T.route.id = :routeId AND T.date = :date")
     List<Trip> findByRoute_IdAndDate(@Param("routeId") Long routeId, @Param("date") LocalDate date);
+
+    @Query("SELECT T FROM Trip T JOIN FETCH T.route LEFT JOIN FETCH T.bus WHERE T.id = :id ")
+    Optional<Trip> findByIdWithDetails(@Param("id") Long id);
 }

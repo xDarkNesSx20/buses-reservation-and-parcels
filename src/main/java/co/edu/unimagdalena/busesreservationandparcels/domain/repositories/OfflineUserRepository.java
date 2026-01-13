@@ -11,6 +11,8 @@ import java.util.Optional;
 
 public interface OfflineUserRepository extends JpaRepository<OfflineUser, Long> {
     List<OfflineUser> findByFullNameContainingIgnoreCase(String fullName);
+
     Page<OfflineUser> findByCreatedAtBetween(OffsetDateTime from, OffsetDateTime to, Pageable pageable);
+
     Optional<OfflineUser> findByIdNumber(String idNumber);
 }

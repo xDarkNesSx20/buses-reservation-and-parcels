@@ -20,13 +20,18 @@ public class FareRuleDTOs {
                                         Boolean dynamicPricing) implements Serializable {
     }
 
+    public record FareRuleBasicResponse(Long id, Long routeId, Long fromStopId, Long toStopId,
+                                        BigDecimal basePrice, Boolean dynamicPricing,
+                                        Set<DiscountResponse> discounts) implements Serializable {
+    }
+
     public record FareRuleResponse(Long id, Long routeId, StopSummary fromStop, StopSummary toStop,
                                    BigDecimal basePrice,
                                    Boolean dynamicPricing, Set<DiscountResponse> discounts) implements Serializable {
     }
 
     public record FareRuleFullResponse(Long id, RouteSummary route, StopSummary fromStop, StopSummary toStop,
-                                   BigDecimal basePrice,
-                                   Boolean dynamicPricing, Set<DiscountResponse> discounts) implements Serializable {
+                                       BigDecimal basePrice, Boolean dynamicPricing,
+                                       Set<DiscountResponse> discounts) implements Serializable {
     }
 }

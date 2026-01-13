@@ -32,7 +32,7 @@ public class Bus {
     @Column(nullable = false)
     private Integer capacity;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "bus_amenities", joinColumns = @JoinColumn(name = "bus_id"),
             inverseJoinColumns = @JoinColumn(name = "amenity_id")
