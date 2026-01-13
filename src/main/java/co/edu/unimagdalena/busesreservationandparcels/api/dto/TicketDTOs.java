@@ -22,25 +22,28 @@ public class TicketDTOs {
                                       PaymentMethod paymentMethod, TicketStatus status) implements Serializable {
     }
 
+    public record TicketBasicResponse(Long id, Long tripId, Long passengerId, String seatNumber,
+            Long fromStopId, Long toStopId, BigDecimal price,
+            PaymentMethod paymentMethod, TicketStatus status, String qrCode) implements Serializable {
+    }
+
     public record TicketResponse(Long id, Long tripId, Long passengerId, String seatNumber,
-                                 StopSummary fromStop, StopSummary toStop, BigDecimal price,
-                                 PaymentMethod paymentMethod, TicketStatus status) implements Serializable {
+            StopSummary fromStop, StopSummary toStop, BigDecimal price,
+            PaymentMethod paymentMethod, TicketStatus status, String qrCode) implements Serializable {
     }
 
-    //Response with trip details
-    public record TicketWTResponse(Long id, String seatNumber, Long passengerId, TripSummary trip,
-                                   StopSummary fromStop, StopSummary toStop, BigDecimal price,
-                                   PaymentMethod paymentMethod, TicketStatus status) implements Serializable {
+    public record TicketWithTripResponse(Long id, TripSummary trip, Long passengerId,
+            String seatNumber, StopSummary fromStop, StopSummary toStop, BigDecimal price,
+            PaymentMethod paymentMethod, TicketStatus status, String qrCode) implements Serializable {
     }
 
-    //Response with passenger details
-    public record TicketWPResponse(Long id, String seatNumber, Long tripId, UserSummary passenger,
-                                   StopSummary fromStop, StopSummary toStop, BigDecimal price,
-                                   PaymentMethod paymentMethod, TicketStatus status) implements Serializable {
+    public record TicketWithPassengerResponse(Long id, Long tripId, UserSummary passenger, String seatNumber,
+            StopSummary fromStop, StopSummary toStop, BigDecimal price, PaymentMethod paymentMethod,
+            TicketStatus status, String qrCode) implements Serializable {
     }
 
-    public record TicketFullResponse(Long id, String seatNumber, TripSummary trip, UserSummary passenger,
-                                     StopSummary fromStop, StopSummary toStop, BigDecimal price,
-                                     PaymentMethod paymentMethod, TicketStatus status) implements Serializable {
+    public record TicketFullResponse(Long id, TripSummary trip, UserSummary passenger,
+            String seatNumber, StopSummary fromStop, StopSummary toStop, BigDecimal price,
+            PaymentMethod paymentMethod, TicketStatus status, String qrCode) implements Serializable {
     }
 }

@@ -33,11 +33,11 @@ public class Ticket {
     @Column(nullable = false, name = "seat_number")
     private String seatNumber;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "from_stop_id", nullable = false)
     private Stop fromStop;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "to_stop_id", nullable = false)
     private Stop toStop;
 
