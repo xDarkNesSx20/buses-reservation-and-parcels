@@ -12,7 +12,8 @@ public class StopDTOs {
                                     BigDecimal longitude) implements Serializable {
     }
 
-    public record StopUpdateRequest(String name, Integer stopOrder) implements Serializable {
+    public record StopUpdateRequest(String name, Integer stopOrder, BigDecimal latitude,
+                                    BigDecimal longitude) implements Serializable {
     }
 
     public record StopResponse(Long id, Long routeId, String name, Integer stopOrder, BigDecimal latitude,

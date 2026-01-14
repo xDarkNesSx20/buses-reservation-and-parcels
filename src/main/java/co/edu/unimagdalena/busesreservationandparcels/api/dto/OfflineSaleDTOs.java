@@ -19,13 +19,9 @@ public class OfflineSaleDTOs {
                                            @NotNull PaymentMethod paymentMethod) implements Serializable {
     }
 
-    public record OfflineSaleUpdateRequest(Long toStopId, String seatNumber, String passengerPhone,
-                                           @Positive BigDecimal price,
+    public record OfflineSaleUpdateRequest(Long toStopId, String seatNumber, String passengerIdNumber,
+                                           String passengerPhone, @Positive BigDecimal price,
                                            PaymentMethod paymentMethod) implements Serializable {
-    }
-
-    public record OfflineSaleSyncRequest(SyncStatus status, Integer syncAttempts, OffsetDateTime syncedAt,
-                                         Long ticketId) implements Serializable {
     }
 
     public record OfflineSaleResponse(Long id, Long tripId, Long fromStopId, Long toStopId,

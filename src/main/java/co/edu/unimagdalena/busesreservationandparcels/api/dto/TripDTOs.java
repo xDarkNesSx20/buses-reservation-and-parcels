@@ -19,11 +19,11 @@ public class TripDTOs {
     }
 
     public record TripResponse(Long id, Long routeId, BusSummary bus, LocalDate date, OffsetDateTime departureAt,
-                               OffsetDateTime arriveEta, TripStatus status) implements Serializable {
+                               OffsetDateTime arrivalEta, TripStatus status) implements Serializable {
     }
 
     public record TripFullResponse(Long id, RouteSummary route, BusSummary bus, LocalDate date,
                                    OffsetDateTime departureAt,
-                                   OffsetDateTime arriveEta, TripStatus status) implements Serializable {
+                                   OffsetDateTime arrivalEta, TripStatus status) implements Serializable {
     }
 }

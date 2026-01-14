@@ -12,7 +12,7 @@ public class RouteDTOs {
                                      @Positive Integer durationMin) implements Serializable {
     }
 
-    public record RouteUpdateRequest(String name, @Positive BigDecimal distanceKm,
+    public record RouteUpdateRequest(String name, String destination, @Positive BigDecimal distanceKm,
                                      @Positive Integer durationMin) implements Serializable {
     }
 
