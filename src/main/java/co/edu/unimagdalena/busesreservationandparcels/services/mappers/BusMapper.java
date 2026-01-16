@@ -18,6 +18,7 @@ public interface BusMapper {
     @Mapping(target = "amenities", ignore = true)
     void patch(BusUpdateRequest request, @MappingTarget Bus entity);
 
+    @Mapping(target = "amenities", source = "amenities")
     BusResponse toResponse(Bus entity);
 
     BusSummary toSummary(Bus entity);

@@ -7,12 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Optional;
 
 public interface IncidentRepository extends JpaRepository<Incident, Long> {
     List<Incident> findByType(IncidentType type);
     List<Incident> findByEntityType(EntityType entityType);
     List<Incident> findByTypeAndEntityType(IncidentType type, EntityType entityType);
-    Optional<Incident> findByEntityIdAndEntityType(Long entityId, EntityType entityType);
+    List<Incident> findByEntityIdAndEntityType(Long entityId, EntityType entityType);
     List<Incident> findByCreatedAtBetween(OffsetDateTime from, OffsetDateTime to);
 }

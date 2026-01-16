@@ -16,8 +16,6 @@ public interface BusService {
 
     void delete(Long id);
 
-    void addAmenities(Long id, Set<Long> amenitiesIds);
-
     BusResponse getByPlate(String plate);
 
     List<BusResponse> getByStatus(BusStatus status);
@@ -26,5 +24,5 @@ public interface BusService {
 
     BusResponse getWithDetails(Long id);
 
-    List<BusResponse> getByAmenities(Collection<String> amenities);
+    List<BusResponse> getByAmenities(Set<String> amenities);
 }

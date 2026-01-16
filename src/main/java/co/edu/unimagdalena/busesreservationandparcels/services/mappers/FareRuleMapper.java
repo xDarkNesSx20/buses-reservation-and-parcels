@@ -23,15 +23,15 @@ public interface FareRuleMapper {
         @Mapping(target = "routeId", source = "route.id"),
         @Mapping(target = "fromStopId", source = "fromStop.id"),
         @Mapping(target = "toStopId", source = "toStop.id"),
-        @Mapping(target = "discounts", ignore = true)
+        @Mapping(target = "discounts", source = "discounts")
     })
     FareRuleBasicResponse toBasicResponse(FareRule entity);
 
     @Mapping(target = "routeId", source = "route.id")
-    @Mapping(target = "discounts", ignore = true)
+    @Mapping(target = "discounts", source = "discounts")
     FareRuleResponse toResponse(FareRule entity);
 
-    @Mapping(target = "discounts", ignore = true)
+    @Mapping(target = "discounts", source = "discounts")
     FareRuleFullResponse toFullResponse(FareRule entity);
 
     @Mapping(target = "fromStop", source = "fromStop")

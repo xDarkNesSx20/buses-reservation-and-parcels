@@ -15,4 +15,6 @@ public interface OfflineUserRepository extends JpaRepository<OfflineUser, Long> 
     Page<OfflineUser> findByCreatedAtBetween(OffsetDateTime from, OffsetDateTime to, Pageable pageable);
 
     Optional<OfflineUser> findByIdNumber(String idNumber);
+
+    boolean existsByIdNumber(String idNumber);
 }

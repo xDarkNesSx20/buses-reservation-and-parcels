@@ -21,9 +21,5 @@ public interface DiscountMapper {
     @Mapping(target = "fareRuleId", source = "fareRule.id")
     DiscountResponse toResponse(Discount entity);
 
-    //Mapping in service
-    @Mapping(target = "fareRule", ignore = true)
-    DiscountFullResponse toFullResponse(Discount entity);
-
     Set<DiscountResponse> toSetResponse(Set<Discount> discounts);
 }

@@ -26,5 +26,5 @@ public interface IncidentService {
 
     List<IncidentResponse> getByCreatedAt(OffsetDateTime start, OffsetDateTime end);
 
-    IncidentResponse getByEntity(Long entityId, EntityType entityType);
+    List<IncidentResponse> getByEntity(Long entityId, EntityType entityType);
 }

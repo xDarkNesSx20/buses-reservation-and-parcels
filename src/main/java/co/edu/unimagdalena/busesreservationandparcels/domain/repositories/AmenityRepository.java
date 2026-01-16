@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface AmenityRepository extends JpaRepository<Amenity,Long> {
     Optional<Amenity> findByNameIgnoreCase(String name);
     List<Amenity> findAllByOrderByNameAsc();
+    boolean existsByNameIgnoreCase(String name);
 }
