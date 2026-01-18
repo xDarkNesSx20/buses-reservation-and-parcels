@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +31,7 @@ public interface SeatHoldRepository extends JpaRepository<SeatHold, Long> {
     @EntityGraph(attributePaths = {"trip", "passenger"})
     @Query(" SELECT SH FROM SeatHold SH WHERE SH.id = :id")
     Optional<SeatHold> findByIdWithDetails(@Param("id") Long id);
+
+    @Query("SELECT SH FROM SeatHold SH WHERE SH.expiresAt <= :now AND SH.status = 'HOLD'")
+    List<SeatHold> findNearToExpiration(OffsetDateTime now);
 }

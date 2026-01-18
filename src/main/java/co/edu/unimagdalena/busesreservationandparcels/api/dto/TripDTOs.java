@@ -14,7 +14,7 @@ public class TripDTOs {
                                     @NotNull OffsetDateTime departureAt) implements Serializable {
     }
 
-    public record TripUpdateRequest(Long busId, LocalDate date, OffsetDateTime departureAt,
+    public record TripUpdateRequest(Long busId, OffsetDateTime departureAt,
                                     TripStatus status) implements Serializable {
     }
 

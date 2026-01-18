@@ -19,6 +19,8 @@ public class ConfigServiceImpl implements ConfigService {
     private final ConfigRepository configRepo;
     private final ConfigMapper mapper;
 
+    //TODO: I could add caching to this service, 'cause configs are not changed that often
+
     @Override
     public ConfigResponse create(ConfigCreateRequest request) {
         if (configRepo.existsByKeyIgnoreCase(request.key()))

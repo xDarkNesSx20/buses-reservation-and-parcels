@@ -15,8 +15,8 @@ public class ParcelDTOs {
                                       @NotNull Long receiverId) implements Serializable {
     }
 
-    public record ParcelUpdateRequest(@Positive BigDecimal price, ParcelStatus status,
-                                      String deliveryOTP) implements Serializable {
+    public record ParcelUpdateRequest(@Positive BigDecimal price, ParcelStatus status)
+            implements Serializable {
     }
 
     public record ParcelResponse(Long id, String code, StopSummary fromStop, StopSummary toStop,

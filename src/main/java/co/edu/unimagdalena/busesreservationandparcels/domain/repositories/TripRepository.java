@@ -37,4 +37,22 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     @Query("SELECT T FROM Trip T JOIN FETCH T.route LEFT JOIN FETCH T.bus WHERE T.id = :id ")
     Optional<Trip> findByIdWithDetails(@Param("id") Long id);
+
+    @Query(value = """
+        SELECT COALESCE(B.capacity, 30) - COALESCE(ticket_count, 0) - COALESCE(seat_hold_count, 0)
+                AS available_seats
+        FROM trips Tr LEFT JOIN buses B ON B.bus_id = Tr.bus_id
+        LEFT JOIN (
+            SELECT trip_id, COUNT(DISTINCT seat_number) AS ticket_count
+            FROM tickets WHERE status NOT IN ('NO_SHOW', 'CANCELLED')
+            GROUP BY trip_id
+        ) T ON T.trip_id = Tr.trip_id
+        LEFT JOIN (
+            SELECT trip_id, COUNT(DISTINCT seat_number) AS seat_hold_count
+            FROM seats_hold WHERE status = 'HOLD' AND expires_at > CURRENT_TIMESTAMP
+            GROUP BY trip_id
+        ) Sh ON Sh.trip_id = Tr.trip_id
+        WHERE Tr.trip_id = :tripId
+        """, nativeQuery = true)
+    int countFreeSeats(@Param("tripId") Long tripId);
 }

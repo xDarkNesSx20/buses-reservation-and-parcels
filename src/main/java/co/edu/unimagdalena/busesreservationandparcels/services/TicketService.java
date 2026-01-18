@@ -9,8 +9,11 @@ import java.util.List;
 import java.util.Set;
 
 public interface TicketService {
-    TicketFullResponse create(Long tripId, TicketCreateRequest request);
-    List<TicketResponse> createAll(Long tripId, Set<TicketCreateRequest> requests);
+    TicketFullResponse createInApp(Long tripId, TicketAppCreateRequest request);
+    List<TicketResponse> createAllInApp(Long tripId, Set<TicketAppCreateRequest> requests);
+    TicketFullResponse createInOffice(Long tripId, TicketOfficeCreateRequest request);
+    List<TicketResponse> createAllInOffice(Long tripId, Set<TicketOfficeCreateRequest> requests);
+
     TicketResponse get(Long id);
     TicketResponse update(Long id, TicketUpdateRequest request);
     void delete(Long id);

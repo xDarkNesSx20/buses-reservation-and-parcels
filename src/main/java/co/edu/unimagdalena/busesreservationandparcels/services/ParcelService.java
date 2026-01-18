@@ -17,12 +17,12 @@ public interface ParcelService {
 
     List<ParcelResponse> getByFromStop(Long fromStopId);
     List<ParcelResponse> getByToStop(Long toStopId);
-    List<ParcelResponse> getByStops(Long fromStopId, Long stopId);
-    List<ParcelResponse> getByStopsAndStatus(Long fromStopId, Long stopId, ParcelStatus status);
+    List<ParcelResponse> getByStops(Long fromStopId, Long toStopId);
+    List<ParcelResponse> getByStopsAndStatus(Long fromStopId, Long toStopId, ParcelStatus status);
     List<ParcelResponse> getByFromStopAndStatus(Long fromStopId, ParcelStatus status);
     List<ParcelResponse> getByToStopAndStatus(Long toStopId, ParcelStatus status);
     List<ParcelResponse> getBySender(Long senderId);
-    List<ParcelResponse> getByReceiver(Long senderId);
+    List<ParcelResponse> getByReceiver(Long receiverId);
     List<ParcelResponse> getByStatus(ParcelStatus status);
 
     List<ParcelResponse> getIncoming(Long toStopId);

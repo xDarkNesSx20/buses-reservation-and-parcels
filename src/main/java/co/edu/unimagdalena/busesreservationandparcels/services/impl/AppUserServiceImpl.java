@@ -26,7 +26,7 @@ public class AppUserServiceImpl implements AppUserService {
     This method ain't needed 'cause AuthController will take it on
     @Override
     @Transactional
-    public AppUserResponse create(@NotNull AppUserCreateRequest request) {
+    public AppUserResponse createInApp(@NotNull AppUserCreateRequest request) {
         var alreadyExists = appUserRepo.existsByEmailIgnoreCase(request.email());
         if (alreadyExists) throw new AlreadyExistsException("Email already in use.");
 
@@ -55,7 +55,7 @@ public class AppUserServiceImpl implements AppUserService {
         mapper.patch(request, appUser);
 
         if (request.password() != null){
-            //And now, how can I encrypt the password?
+            //TODO: And now, how can I encrypt the password?
         }
         return mapper.toResponse(appUserRepo.save(appUser));
     }

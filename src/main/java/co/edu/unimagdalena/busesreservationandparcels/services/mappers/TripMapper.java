@@ -13,7 +13,6 @@ public interface TripMapper {
     Trip toEntity(TripCreateRequest request);
 
     @BeanMapping(ignoreByDefault = true, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "date", source = "date")
     @Mapping(target = "departureAt", source = "departureAt")
     @Mapping(target = "status", source = "status")
     void patch(TripUpdateRequest request, @MappingTarget Trip entity);

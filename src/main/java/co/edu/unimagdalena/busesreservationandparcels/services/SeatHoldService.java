@@ -20,4 +20,6 @@ public interface SeatHoldService {
     List<SeatHoldResponse> getByTripAndStatus(Long tripId, SeatHoldStatus status);
     List<SeatHoldResponse> getByPassenger(Long passengerId);
     SeatHoldFullResponse getWithDetails(Long id);
+
+    void setHoldsToExpired();
 }

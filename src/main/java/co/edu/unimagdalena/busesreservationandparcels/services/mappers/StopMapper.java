@@ -7,6 +7,7 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", uses = RouteMapper.class)
 public interface StopMapper {
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "route", ignore = true)
     @Mapping(target = "id", ignore = true)
     Stop toEntity(StopCreateRequest request);
@@ -14,6 +15,7 @@ public interface StopMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "route", ignore = true)
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "stopOrder", ignore = true)
     void patch(StopUpdateRequest request, @MappingTarget Stop entity);
 
     @Mapping(target = "routeId", source = "route.id")

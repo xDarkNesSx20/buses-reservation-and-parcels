@@ -6,14 +6,13 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class, StopMapper.class})
 public interface ParcelMapper {
-    @BeanMapping(ignoreByDefault = true)
+    @BeanMapping(ignoreByDefault = true, nullValuePropertyMappingStrategy =  NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "price", source = "price")
     Parcel toEntity(ParcelCreateRequest request);
 
     @BeanMapping(ignoreByDefault = true, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "price", source = "price")
     @Mapping(target = "status", source = "status")
-    @Mapping(target = "deliveryOTP", source = "deliveryOTP")
     void patch(ParcelUpdateRequest request, @MappingTarget Parcel entity);
 
     @Mapping(target = "senderId", source = "sender.id")

@@ -14,7 +14,7 @@ public interface StopService {
 
     List<StopResponse> getByRoute(Long routeId);
     List<StopResponse> getByName(String name);
-    StopResponse geByRouteAndOrder(Long routeId, Integer stopOrder);
+    StopResponse getByRouteAndOrder(Long routeId, Integer stopOrder);
     StopResponse getLastByRoute(Long routeId);
     StopResponse getFirstByRoute(Long routeId);
     StopFullResponse getWithDetails(Long id);

@@ -9,7 +9,12 @@ public interface TicketMapper {
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "paymentMethod", source = "paymentMethod")
     @Mapping(target = "seatNumber", source = "seatNumber")
-    Ticket toEntity(TicketCreateRequest request);
+    Ticket toEntity(TicketAppCreateRequest request);
+
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "paymentMethod", source = "paymentMethod")
+    @Mapping(target = "seatNumber", source = "seatNumber")
+    Ticket toEntity(TicketOfficeCreateRequest request);
 
     @BeanMapping(ignoreByDefault = true, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "paymentMethod", source = "paymentMethod")
@@ -18,10 +23,10 @@ public interface TicketMapper {
     void patch(TicketUpdateRequest request, @MappingTarget Ticket ticket);
 
     @Mappings({
-        @Mapping(target = "tripId", source = "trip.id"),
-        @Mapping(target = "toStopId", source = "toStop.id"),
-        @Mapping(target = "passengerId", source = "passenger.id"),
-        @Mapping(target = "fromStopId", source = "fromStop.id")
+            @Mapping(target = "tripId", source = "trip.id"),
+            @Mapping(target = "toStopId", source = "toStop.id"),
+            @Mapping(target = "passengerId", source = "passenger.id"),
+            @Mapping(target = "fromStopId", source = "fromStop.id")
     })
     TicketBasicResponse toBasicResponse(Ticket ticket);
 

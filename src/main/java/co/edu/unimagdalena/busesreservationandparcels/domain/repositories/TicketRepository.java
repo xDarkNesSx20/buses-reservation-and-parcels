@@ -62,5 +62,17 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findByStopsAndTrip(@Param("fromStopId") Long fromStopId,
             @Param("toStopId") Long toStopId, @Param("tripId") Long tripId);
 
-    boolean existsByTripIdAndSeatNumber(Long tripId, String seatNumber);
+    //Here I just use fromStopOrder because I think it has more relevance for
+    // selling a ticket, as well as SeatHold has more relevance while a seat is hold
+    @Query("""
+        SELECT NOT EXISTS(
+            SELECT 1 FROM Ticket T
+            JOIN SeatHold SH ON SH.trip.id = :tripId
+            WHERE (T.trip.id = :tripId AND T.seatNumber = :seatNumber
+                AND :fromStopOrder BETWEEN T.fromStop.stopOrder AND T.toStop.stopOrder)
+                OR (SH.seatNumber = :seatNumber AND SH.status = 'HOLD')
+        )
+    """)
+    boolean isSeatAvailable(@Param("tripId") Long tripId, @Param("seatNumber") String seatNumber,
+                            Integer fromStopOrder);
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface StopRepository extends JpaRepository<Stop, Long> {
     List<Stop> findByRoute_Id(Long routeId);
-    List<Stop> findByName(String name);
+    List<Stop> findByNameIgnoreCase(String name);
     Optional<Stop> findByRoute_IdAndStopOrder(Long routeId, Integer stopOrder);
 
     @Query(value = "SELECT * FROM stops WHERE route_id = :routeId ORDER BY stop_order DESC LIMIT 1", nativeQuery = true)
@@ -21,4 +21,10 @@ public interface StopRepository extends JpaRepository<Stop, Long> {
 
     @Query("SELECT S FROM Stop S JOIN FETCH S.route WHERE S.id = :id")
     Optional<Stop> findByIdWithRoute(@Param("id") Long id);
+
+    boolean existsById(Long id);
+
+    boolean existsByRoute_IdAndStopOrder(Long routeId, Integer stopOrder);
+
+    List<Stop> findByRoute_IdAndStopOrderGreaterThanEqual(Long routeId, Integer minStopOrder);
 }

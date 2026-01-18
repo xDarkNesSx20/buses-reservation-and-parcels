@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 public interface AppUserService {
-    //AppUserResponse create(AppUserCreateRequest request);
+    //AppUserResponse createInApp(AppUserCreateRequest request);
 
     AppUserResponse get(Long id);
 

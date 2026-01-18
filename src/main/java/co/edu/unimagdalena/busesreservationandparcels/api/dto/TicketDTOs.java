@@ -13,9 +13,15 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class TicketDTOs {
-    public record TicketCreateRequest(@NotNull Long passengerId, @NotBlank @Size(min = 2, max = 5) String seatNumber,
-                                      @NotNull Long fromStopId, @NotNull Long toStopId,
-                                      @NotNull PaymentMethod paymentMethod) implements Serializable {
+    public record TicketAppCreateRequest(@NotNull Long passengerId, @NotBlank @Size(min = 2, max = 5) String seatNumber,
+                                         @NotNull Long fromStopId, @NotNull Long toStopId,
+                                         @NotNull PaymentMethod paymentMethod) implements Serializable {
+    }
+
+    public record TicketOfficeCreateRequest(@NotBlank String passengerIdNumber, String passengerFullName, String passengerPhone,
+                                            @NotBlank @Size(min = 2, max = 5) String seatNumber,
+                                         @NotNull Long fromStopId, @NotNull Long toStopId,
+                                         @NotNull PaymentMethod paymentMethod) implements Serializable {
     }
 
     public record TicketUpdateRequest(@Size(min = 2, max = 5) String seatNumber, Long toStopId,
